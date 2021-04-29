@@ -1,0 +1,24 @@
+
+```{r}
+library(reticulate)
+# This might already be done.
+# Should this last bit be /bin/python (or) python3? Yes it should be. Not /bin/conda
+Sys.setenv(RETICULATE_PYTHON = "/Users/brian/Library/r-miniconda/bin/python")
+# Silence. Good.
+```
+
+```{r}
+py_run_string("aa = 6", local = F)
+py_run_string("print('Hello world')", local = T)
+py_run_string("print('Hello world')", local = F) # No diff. It matters for the object creation.
+py_run_string("aa", local = T)
+```
+
+```{python}
+bb = 66
+print(bb)
+```
+```{r}
+cc <- py$bb * 2
+```
+

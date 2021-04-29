@@ -1,0 +1,61 @@
+# Plagerism Detector
+
+https://towardsdatascience.com/simple-plagiarism-detection-in-python-2314ac3aee88
+
+```{r}
+library(reticulate)
+library(tidyverse)
+```
+```{r}
+# This might already be done.
+# Should this last bit be /bin/python (or) python3? Yes it should be. Not /bin/conda
+Sys.setenv(RETICULATE_PYTHON = "/Users/brian/Library/r-miniconda/bin/python")
+# Silence. Good.
+```
+
+```{python}
+import re
+from nltk.util import ngrams, pad_sequence, everygrams
+from nltk.tokenize import word_tokenize
+from nltk.lm import MLE, WittenBellInterpolated
+import numpy as np
+import plotly.graph_objects as go
+from scipy.ndimage import gaussian_filter
+```
+
+```{python}
+# Train data file
+train_data_file = ""
+
+# read training data
+with open(train_data_file) as f:
+    train_text = f.read().lower()
+    
+# apply preprocessing (remove text inside square and curly brackets and rem. punc.)
+train_text = re.sub(r"\[.*\]|\{.*\}", "", train_text)
+train_text = re.sub(r'[^w\s]', "", train_text)
+# the above seems to remove just the the literal value 'w'. Not sure how that helps.
+
+# set ngram number
+n = 4
+
+# pad the text and tokenize
+training_data = list(pad_sequence(word_tokenize(train_text), n, pad_left = True, left_pad_symbol = "<s>"))
+
+# generate ngrams
+ngrams = list(everygrams(training_data, max_len = n))
+print("Number of ngrams:", len(ngrams))
+
+# build ngram language models
+model = WittenBellInterpolated(n)
+model.fit([ngrams], vocabulary_text = training_data))
+print(model.vocab)
+
+```
+
+
+
+```{r}
+
+```
+

@@ -1,0 +1,49 @@
+# How to set up Python in Rstudio
+https://www.youtube.com/watch?v=OtINRCXprGg
+
+
+```{r}
+
+library(reticulate)
+# install_miniconda() # Already installed.
+```
+
+Environments: How to segregate installations of Python. $ conda activate r-reticulate $ conda deactivate
+This is apparently fairly common in Python and by fairly I mean very. 
+
+Also see: https://support.rstudio.com/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio
+
+## Step one install python (done)
+
+Why use Anaconda vs. Python? Python.org version is bare, but that might be a good thing. Anaconda has all the packages that you need numpy and matplotlib.
+
+In Terminal console (not python)
+brian$ virtualenv python
+
+source /Users/brian/Library/r-miniconda/bin/activate
+
+```{r}
+# This might already be done.
+# Should this last bit be /bin/python (or) python3? Yes it should be. Not /bin/conda
+Sys.setenv(RETICULATE_PYTHON = "/Users/brian/Library/r-miniconda/bin/python")
+# Silence. Good.
+```
+ln -s -f /Users/brian/Library/r-miniconda/bin/python /Users/brian/anaconda3/bin/python 
+```{r}
+use_python("/Users/brian/Library/r-miniconda/bin/python")
+```
+
+This doesn't seem to work. I'm not sure where or if it is creating anything.
+```{r}
+py_run_string("aa = 6", local = T) # Where does this go?
+py_run_string("aa = 6", local = F)
+py_run_string("print('Hello world')", local = T)
+py_run_string("aa", local = T)
+```
+
+```{python}
+bb = 66
+print(bb)
+```
+
+
