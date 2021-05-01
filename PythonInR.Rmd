@@ -28,7 +28,7 @@ source /Users/brian/Library/r-miniconda/bin/activate
 Sys.setenv(RETICULATE_PYTHON = "/Users/brian/Library/r-miniconda/bin/python")
 # Silence. Good.
 ```
-ln -s -f /Users/brian/Library/r-miniconda/bin/python /Users/brian/anaconda3/bin/python 
+
 ```{r}
 use_python("/Users/brian/Library/r-miniconda/bin/python")
 ```

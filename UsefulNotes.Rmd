@@ -1,0 +1,19 @@
+# Best Practices for Using Python with RStudio Connect
+
+ln -s -f /Users/brian/Library/r-miniconda/bin/python /Users/brian/anaconda3/bin/python
+
+The -s tells to create a symbolic link.
+
+https://www.howtogeek.com/297721/how-to-create-and-use-symbolic-links-aka-symlinks-on-a-mac/
+
+If your file path contains spaces or other special characters, you’ll need to enclose it in quotation marks. So, if you wanted to create a link on your desktop to a folder named “My Files” inside your user directory, you’d need something like the following command:
+
+ln -s "/Users/name/My Files" "/Users/name/Desktop/My Link"
+
+/Users/brian/Library/r-miniconda/bin/activate
+
+brew link python@3.9
+
+conda install anaconda=
+
+conda update --all
